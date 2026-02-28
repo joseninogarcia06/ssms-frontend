@@ -8,4 +8,4 @@ The SSMS Admin Portal streamlines administrative operations by digitizing studen
 The portal is accessible only to authorized users, ensuring data confidentiality and operational control.
 
 ## LIVE DEMO URL:
-https://joseninogarcia06.github.io/SSMS_Admin_Portal/
+https://ssms-frontend-1.onrender.com/
