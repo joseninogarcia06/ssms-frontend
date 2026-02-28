@@ -10,5 +10,5 @@ export default defineConfig({
       },
     }),
   ],
-  base: "/SSMS_Admin_Portal/"
+  //base: "/SSMS_Admin_Portal/"
 })
