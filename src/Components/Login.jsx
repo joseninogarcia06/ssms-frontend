@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react"
 import { useForm } from "react-hook-form";
 import ssmsLogo from "../assets/ssms_logo.png"
+import { VerifyAccount } from "../API/RenderAPI";
 
 export default function Login(){
    const [result, setResult] = useState({ hasError: false, errorMessage: '' });
@@ -11,7 +12,7 @@ export default function Login(){
         document.body.classList.add('body-login');
     }, [])
 
-    function onLoginForm(data){
+    const onLoginForm = async (data) => {
         if(data.userid.length > 18){
             setResult({ hasError: true, errorMessage: 'User ID exceeded to 18 characters.' });
             return;
@@ -20,6 +21,15 @@ export default function Login(){
         if(data.password.length < 6){
             setResult({ hasError: true, errorMessage: 'Password length should have minimum of 6 characters.' });
         }
+
+        const api = await VerifyAccount(data.userid, data.password);
+        
+        if(!api.isSuccess){
+            setResult({ hasError: true, errorMessage: api.errorMessage });
+            return;
+        }
+
+        setResult({ hasResult: true, errorMessage: "" });
     }
 
     return (
